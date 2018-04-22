@@ -1,12 +1,12 @@
 # go-zk-lock
-[![Build Status](https://travis-ci.org/nladuo/go-zk-lock.svg)](https://travis-ci.org/nladuo/go-zk-lock)
+[![Build Status](https://travis-ci.org/jetume/go-zk-lock.svg)](https://travis-ci.org/jetume/go-zk-lock)
 
 a distributed locker based on zookeeper and implemented in golang.
 
 # Installation
 ```go
 go get github.com/samuel/go-zookeeper/zk
-go get github.com/nladuo/go-zk-lock
+go get github.com/jetume/go-zk-lock
 ```
 
 # Usage

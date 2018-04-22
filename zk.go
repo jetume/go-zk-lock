@@ -2,15 +2,17 @@
 package DLocker
 
 import (
-	"github.com/samuel/go-zookeeper/zk"
 	"log"
 	"time"
+
+	"github.com/samuel/go-zookeeper/zk"
 )
 
 var (
-	zkConn  *zk.Conn
-	hosts   []string
-	timeout time.Duration
+	zkConn             *zk.Conn
+	hosts              []string
+	timeout            time.Duration
+	maxConnectAttempts = 3
 )
 
 func getZkConn() *zk.Conn {
@@ -25,13 +27,17 @@ func EstablishZkConn(_hosts []string, zkTimeOut time.Duration) error {
 	var err error
 	timeout = zkTimeOut
 	hosts = _hosts
+	attempts := 0
 RECONNECT:
 	zkConn = nil
 	zkConn, _, err = zk.Connect(hosts, timeout)
 	if err != nil {
 		time.Sleep(3 * time.Second)
 		log.Println("EstablishZkConn  ", err.Error())
-		goto RECONNECT
+		if attempts < maxConnectAttempts {
+			attempts++
+			goto RECONNECT
+		}
 	}
 	return err
 }

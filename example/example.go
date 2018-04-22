@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/nladuo/go-zk-lock"
 	"log"
 	"time"
+
+	"github.com/jetume/go-zk-lock"
 )
 
 var (

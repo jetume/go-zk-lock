@@ -1,12 +1,13 @@
 package DLocker
 
 import (
-	"github.com/nladuo/go-zk-lock/modules"
-	"github.com/samuel/go-zookeeper/zk"
 	"log"
 	"strconv"
 	"sync"
 	"time"
+
+	"github.com/jetume/go-zk-lock/modules"
+	"github.com/samuel/go-zookeeper/zk"
 )
 
 type Dlocker struct {
